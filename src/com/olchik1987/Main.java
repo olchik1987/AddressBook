@@ -1,4 +1,5 @@
 package com.olchik1987;
+
 import com.olchik1987.contents.Contact;
 import com.olchik1987.service.ContactService;
 import com.olchik1987.util.Util;
@@ -15,49 +16,49 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
 
-    util.initApp();
+        util.initApp();
 
         System.out.println("=========================================================================================");
         System.out.println("                        Добро пожаловать в адресную книгу                                ");
         System.out.println("=========================================================================================");
 
-    String command = "start";
+        String command = "start";
 
         while (command.equals("start") || command.equals("continue")) {
 
-        System.out.println("Подсказка по коммандам ==================================================================");
-        System.out.println("enter contact           - ввод нового контакта ==========================================");
-        System.out.println("print contacts          - вывод в консоль всех контактов ================================");
-        System.out.println("search by name          - поиск по имени контакта =======================================");
-        System.out.println("=========================================================================================");
-        System.out.println("Введите комманду");
+            System.out.println("Подсказка по коммандам ==================================================================");
+            System.out.println("enter contact           - ввод нового контакта ==========================================");
+            System.out.println("print contacts          - вывод в консоль всех контактов ================================");
+            System.out.println("search by name          - поиск по имени контакта =======================================");
+            System.out.println("=========================================================================================");
+            System.out.println("Введите комманду");
 
-        command = inputText();
+            command = inputText();
 
-        switch (command) {
-            case "enter contact": {
-                contactService.inputContact();
-            }
-            break;
-            case "print contacts": {
-                contactService.printContacts(contactService.getAllContacts());
-            }
-            break;
-            case "search by name": {
-                System.out.println("Введите имя");
-                String name = inputText();
-                Contact contact = contactService.getContactByFirstName(name);
+            switch (command) {
+                case "enter contact": {
+                    contactService.inputContact();
+                }
+                break;
+                case "print contacts": {
+                    contactService.printContacts(contactService.getAllContacts());
+                }
+                break;
+                case "search by name": {
+                    System.out.println("Введите имя");
+                    String name = inputText();
+                    Contact contact = contactService.getContactByFirstName(name);
 
-                contactService.printContact(contact);
+                    contactService.printContact(contact);
+                }
+                break;
+                default: {
+                    System.out.println("Вы ошиблись!!!");
+                }
             }
-            break;
-            default: {
-                System.out.println("Вы ошиблись!!!");
-            }
+
+            System.out.println('\n' + "Для продолжения введите continue");
+            command = inputText();
         }
-
-        System.out.println('\n' + "Для продолжения введите continue");
-        command = inputText();
     }
-}
 }
