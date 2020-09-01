@@ -1,8 +1,8 @@
-package com.olchik1987;
+package com.olchik1987.contents;
 
 public class Contact {
     // Имя
-    private String name;
+    private String firstName;
     //Фамилия
     private String lastName;
     //Телефон
@@ -12,19 +12,33 @@ public class Contact {
     //Имейл
     private String email;
 
-    public Contact(){
+    public Contact(String firstName, String lastName, long phoneNumber, Address address, String email) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.phoneNumber = phoneNumber;
+        this.address = address;
+        this.email = email;
     }
 
-    public Contact(String name){
-        this.setName(name);
+
+    public Contact(String firstName){
+        this.setName(firstName);
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
     public String getName() {
-        return name;
+        return firstName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setName(String firstName) {
+        this.firstName= firstName;
     }
 
     public String getLastName() {

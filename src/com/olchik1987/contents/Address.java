@@ -1,4 +1,4 @@
-package com.olchik1987;
+package com.olchik1987.contents;
 
 public class Address {
     private int houseNumber;
@@ -7,7 +7,20 @@ public class Address {
     private String state;
     private int zipCode;
 
-    public Address(){
+    public String getStreetName() {
+        return streetName;
+    }
+
+    public void setStreetName(String streetName) {
+        this.streetName = streetName;
+    }
+
+    public Address(int houseNumber, String streetName, String city, String state, int zipCode) {
+        this.houseNumber = houseNumber;
+        this.streetName = streetName;
+        this.city = city;
+        this.state = state;
+        this.zipCode = zipCode;
     }
 
     public int getHouseNumber() {

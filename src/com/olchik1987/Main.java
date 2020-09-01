@@ -1,43 +1,63 @@
 package com.olchik1987;
-import java.io.BufferedReader;
-import java.io.Console;
+import com.olchik1987.contents.Contact;
+import com.olchik1987.service.ContactService;
+import com.olchik1987.util.Util;
+
 import java.io.IOException;
-import java.io.InputStreamReader;
+
+import static com.olchik1987.util.Util.inputText;
+
 
 public class Main {
 
+    private static ContactService contactService = new ContactService();
+    private static Util util = new Util();
+
     public static void main(String[] args) throws IOException {
-        // Хранить контакты
-        //Поиск контактов
-        //Поиск по фамилии
-        //Ввод фамилии
-        //Вывод на экран
 
-        Contact contact = new Contact("Olga");
-        System.out.println(contact.getName());
+    util.initApp();
 
-        Address address = new Address();
-        System.out.println(address.getCity());
+        System.out.println("=========================================================================================");
+        System.out.println("                        Добро пожаловать в адресную книгу                                ");
+        System.out.println("=========================================================================================");
 
+    String command = "start";
 
-        System.out.println('\n' + "Ввод данных для проекта AddressBook с консоли, пример");
-        String firstName = enterText();
-        String lastName = enterText();
+        while (command.equals("start") || command.equals("continue")) {
 
-        String[] names = new String[100];
-        names[0] = firstName;
-        names[1] = lastName;
-        System.out.println("firstName = " + names[0]);
-        System.out.println("lastName = " + names[1]);
+        System.out.println("Подсказка по коммандам ==================================================================");
+        System.out.println("enter contact           - ввод нового контакта ==========================================");
+        System.out.println("print contacts          - вывод в консоль всех контактов ================================");
+        System.out.println("search by name          - поиск по имени контакта =======================================");
+        System.out.println("=========================================================================================");
+        System.out.println("Введите комманду");
 
+        command = inputText();
+
+        switch (command) {
+            case "enter contact": {
+                contactService.inputContact();
+            }
+            break;
+            case "print contacts": {
+                contactService.printContacts(contactService.getAllContacts());
+            }
+            break;
+            case "search by name": {
+                System.out.println("Введите имя");
+                String name = inputText();
+                Contact contact = contactService.getContactByFirstName(name);
+
+                contactService.printContact(contact);
+            }
+            break;
+            default: {
+                System.out.println("Вы ошиблись!!!");
+            }
+        }
+
+        System.out.println('\n' + "Для продолжения введите continue");
+        command = inputText();
     }
-
-    private static String enterText() throws IOException {
-        BufferedReader reader =
-                new BufferedReader(new InputStreamReader(System.in));
-        System.out.println("Введите текст:");
-        String name = reader.readLine();
-        //System.out.println(name);
-        return name;
-    }
+}
 }
