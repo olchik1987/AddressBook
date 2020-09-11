@@ -88,4 +88,9 @@ public class ContactService {
         }
     }
 
+    public void AllContactsNames(Contact contact) {
+        System.out.println("=========================================================================================");
+        System.out.println("First name                     " + contact.getFirstName());
+        System.out.println("Last name                 " + contact.getLastName());
+    }
 }

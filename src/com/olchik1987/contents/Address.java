@@ -3,7 +3,7 @@ package com.olchik1987.contents;
 public class Address {
     private int houseNumber;
     private String streetName;
-    private String city;
+    public String city;
     private String state;
     private int zipCode;
 
