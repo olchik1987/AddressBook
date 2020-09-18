@@ -3,6 +3,7 @@ import com.olchik1987.contents.Address;
 import com.olchik1987.contents.Contact;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import static com.olchik1987.util.Util.inputText;
 
@@ -21,7 +22,7 @@ public class ContactService {
     public Contact getContactByFirstName (String firstName){
         return storageService.getByFirstName (firstName);
     }
-    public Contact[] getAllContacts() {
+    public ArrayList<Contact> getAllContacts() {
         return storageService.getAllContact();
     }
     public void updateContact(Contact contact) {
@@ -80,7 +81,7 @@ public class ContactService {
         System.out.println("=========================================================================================");
     }
 
-    public void printContacts(Contact[] contacts) {
+    public void printContacts(ArrayList<Contact> contacts) {
         for (Contact contact : contacts) {
             if (contact != null) {
                 printContact(contact);
