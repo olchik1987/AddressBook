@@ -1,4 +1,5 @@
 package com.olchik1987.service;
+
 import com.olchik1987.contents.Address;
 import com.olchik1987.contents.Contact;
 
@@ -15,22 +16,27 @@ public class ContactService {
 
         saveContact(contact);
     }
-    public void saveContact(Contact contact){
+
+    public void saveContact(Contact contact) {
         StorageService.saveContact(contact);
     }
 
-    public Contact getContactByFirstName (String firstName){
-        return storageService.getByFirstName (firstName);
+    public Contact getContactByFirstName(String firstName) {
+        return storageService.getByFirstName(firstName);
     }
+
     public ArrayList<Contact> getAllContacts() {
         return storageService.getAllContact();
     }
-    public void updateContact(Contact contact) {
-        storageService.updateContact(contact);
-    }
+
+    /*  public void updateContact(Contact contact) {
+          storageService.updateContact(contact);
+      }*/
+
     public void deleteContact(Contact contact) {
         storageService.deleteContact(contact);
     }
+
     public void inputContact() throws IOException {
 
         System.out.println("Type your first name             ");
@@ -89,9 +95,4 @@ public class ContactService {
         }
     }
 
-    public void AllContactsNames(Contact contact) {
-        System.out.println("=========================================================================================");
-        System.out.println("First name                     " + contact.getFirstName());
-        System.out.println("Last name                 " + contact.getLastName());
-    }
 }

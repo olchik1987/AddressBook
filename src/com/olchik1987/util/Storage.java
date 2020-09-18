@@ -5,11 +5,11 @@ import com.olchik1987.contents.Contact;
 import java.util.ArrayList;
 
 public class Storage {
-    public static final int STORAGE_SIZE = 100;
 
-    public static ArrayList<Contact> contacts = new ArrayList<>(STORAGE_SIZE);
+    private static ArrayList<Contact> contacts = new ArrayList<>();
 
-    public static ArrayList<Contact> getContacts()
-    {return contacts;};
+    public static ArrayList<Contact> getContacts() {
+        return contacts;
+    }
 
 }
