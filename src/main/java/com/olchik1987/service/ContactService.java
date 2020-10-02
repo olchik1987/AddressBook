@@ -18,7 +18,8 @@ public class ContactService {
     }
 
     public void saveContact(Contact contact) {
-        StorageService.saveContact(contact);
+        storageService.saveContact(contact);
+
     }
 
     public Contact getContactByFirstName(String firstName) {
@@ -34,7 +35,7 @@ public class ContactService {
       }*/
 
     public void deleteContact(Contact contact) {
-        storageService.deleteContact(contact);
+        storageService.removeContact(contact);
     }
 
     public void inputContact() throws IOException {

@@ -1,8 +1,8 @@
 package com.olchik1987.service;
 
 import com.olchik1987.contents.Contact;
+import com.olchik1987.util.Sorter;
 import com.olchik1987.util.Storage;
-import org.junit.runner.manipulation.Sorter;
 
 import java.util.ArrayList;
 
@@ -21,7 +21,7 @@ public class StorageService {
     public Contact getByFirstNameOrLastNameOrCityName(String searchQuery) {
         for (Contact contact : Storage.getContacts()) {
 
-            if (contact.getFirstName().equals(searchQuery) || contact.getLastName().equals(searchQuery) || contact.getAddress().getCityName().equals(searchQuery)) {
+            if (contact.getFirstName().equals(searchQuery) || contact.getLastName().equals(searchQuery) || contact.getAddress().getCity().equals(searchQuery)) {
                 return contact;
             }
         }
