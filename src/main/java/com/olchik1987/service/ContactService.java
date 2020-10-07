@@ -12,6 +12,9 @@ public class ContactService {
     private StorageService storageService = new StorageService();
 
     public void createContact(String firstName, String lastName, long phoneNumber, Address address, String email) {
+        if (address == null) {
+            throw new NullPointerException();
+        }
         Contact contact = new Contact(firstName, lastName, phoneNumber, address, email);
 
         saveContact(contact);
@@ -20,6 +23,11 @@ public class ContactService {
     public void saveContact(Contact contact) {
         storageService.saveContact(contact);
 
+    }
+
+    public Contact searchByFirstNameOrLastNameOrCityNameOrEmail(String searchQuery) {
+
+        return storageService.getByFirstNameOrLastNameOrCityNameOrEmail(searchQuery);
     }
 
     public Contact getContactByFirstName(String firstName) {
@@ -33,11 +41,17 @@ public class ContactService {
     /*  public void updateContact(Contact contact) {
           storageService.updateContact(contact);
       }*/
+    public void deleteContactByFirstName(String firstName) {
+
+        storageService.removeContact(getContactByFirstName(firstName));
+    }
 
     public void deleteContact(Contact contact) {
         storageService.removeContact(contact);
     }
-
+    public void deleteAll() {
+        storageService.removeAll();
+    }
     public void inputContact() throws IOException {
 
         System.out.println("Type your first name             ");

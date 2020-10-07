@@ -18,10 +18,10 @@ public class StorageService {
         return Storage.getContacts();
     }
 
-    public Contact getByFirstNameOrLastNameOrCityName(String searchQuery) {
+    public Contact getByFirstNameOrLastNameOrCityNameOrEmail(String searchQuery) {
         for (Contact contact : Storage.getContacts()) {
 
-            if (contact.getFirstName().equals(searchQuery) || contact.getLastName().equals(searchQuery) || contact.getAddress().getCity().equals(searchQuery)) {
+            if (contact.getFirstName().equals(searchQuery) || contact.getLastName().equals(searchQuery) || contact.getAddress().getCity().equals(searchQuery) || contact.getEmail().equals(searchQuery)) {
                 return contact;
             }
         }
@@ -43,5 +43,7 @@ public class StorageService {
     public void removeContact(Contact contact) {
         Storage.getContacts().remove(contact);
     }
-
+    public void removeAll() {
+        Storage.getContacts().clear();
+    }
 }
