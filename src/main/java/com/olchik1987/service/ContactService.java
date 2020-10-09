@@ -12,7 +12,7 @@ public class ContactService {
     private StorageService storageService = new StorageService();
 
     public void createContact(String firstName, String lastName, long phoneNumber, Address address, String email) {
-        if (address == null) {
+        if (firstName == null || lastName == null || phoneNumber == 0 || address == null || email == null) {
             throw new NullPointerException();
         }
         Contact contact = new Contact(firstName, lastName, phoneNumber, address, email);
@@ -49,9 +49,11 @@ public class ContactService {
     public void deleteContact(Contact contact) {
         storageService.removeContact(contact);
     }
+
     public void deleteAll() {
         storageService.removeAll();
     }
+
     public void inputContact() throws IOException {
 
         System.out.println("Type your first name             ");
